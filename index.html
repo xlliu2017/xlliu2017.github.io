@@ -1,22 +1,426 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xinliang Liu - Homepage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* Classic serif font */
+            background-color: #ffffff; /* White background */
+            color: #333333; /* Dark grey text */
+            line-height: 1.6; /* Slightly reduced line height */
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 1rem; /* Base font size */
+        }
+        .dark-mode {
+            background-color: #222222; /* Dark background for dark mode */
+            color: #eeeeee; /* Light text for dark mode */
+        }
+        .navbar {
+            background-color: #003366; /* Dark blue navbar */
+            font-family: 'Arial', sans-serif; /* Sans-serif for nav */
+        }
+        .navbar a {
+            color: #ffffff;
+        }
+        .header {
+            background-color: #eef2f7; /* Light grey-blue header background */
+            color: #003366; /* Dark blue text */
+            text-align: center;
+            padding: 25px 0; /* Reduced padding */
+            border-bottom: 1px solid #cccccc;
+        }
+        .header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2em; /* Slightly reduced */
+            margin-bottom: 8px; /* Reduced */
+            font-weight: bold;
+        }
+        .header p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.0em; /* Slightly reduced */
+            color: #555555;
+            margin-bottom: 5px; /* Reduced */
+        }
+        .header a {
+            color: #0056b3; /* Standard link blue */
+            text-decoration: none;
+        }
+        .header a:hover {
+            text-decoration: underline;
+        }
+        .profile-pic {
+            max-width: 180px; /* Larger size */
+            height: auto;
+            /* border-radius: 50%; */ /* Removed for regular shape */
+            margin-bottom: 10px; 
+            /* border: 2px solid #ffffff; */ /* Removed border */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .header .row {
+            align-items: center; /* Vertically align items in the row */
+        }
+        .section-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.6em; /* Reduced size */
+            margin-top: 30px; /* Reduced */
+            margin-bottom: 15px; /* Reduced */
+            text-align: center;
+            color: #003366; /* Dark blue titles */
+            border-bottom: 1px solid #eeeeee; /* Subtle separator */
+            padding-bottom: 8px; /* Reduced */
+        }
+        .list-item {
+            margin-bottom: 10px; /* Reduced spacing */
+            padding-left: 15px; /* Reduced indentation */
+        }
+        section {
+             padding-top: 15px; /* Add some top padding to sections */
+             padding-bottom: 15px; /* Add some bottom padding */
+        }
+        footer {
+            background-color: #f8f9fa; /* Light grey footer */
+            color: #555555; /* Grey text */
+            text-align: center;
+            padding: 15px 0; /* Reduced padding */
+            margin-top: 30px; /* Reduced */
+            border-top: 1px solid #dddddd;
+            font-family: 'Arial', sans-serif;
+            font-size: 0.85em; /* Slightly reduced */
+        }
+        .publication-list li {
+            margin-bottom: 1.2rem; /* Reduced space */
+            padding-left: 0;
+        }
+        .publication-list .title {
+            font-weight: bold;
+            display: block; 
+            margin-bottom: 0.2rem; /* Reduced */
+            color: #003366;
+            font-size: 1.05em; /* Adjust if needed */
+        }
+        .publication-list .authors {
+            font-style: italic;
+            display: block;
+            margin-bottom: 0.2rem; /* Reduced */
+            color: #555555;
+            font-size: 0.95em;
+        }
+        .publication-list .venue {
+            display: block;
+            margin-bottom: 0.2rem; /* Reduced */
+            color: #777777;
+            font-size: 0.9em; /* Reduced */
+        }
+         .publication-list .links a {
+            margin-right: 8px; /* Reduced */
+            font-size: 0.85em; /* Reduced */
+            text-decoration: none;
+            color: #0056b3;
+        }
+        .publication-list .links a:hover {
+            text-decoration: underline;
+        }
+        /* Dark Mode Compact Adjustments */
+        .dark-mode {
+             line-height: 1.6;
+        }
+        .dark-mode .header {
+            background-color: #2a2a2a;
+            color: #eeeeee;
+            border-bottom-color: #444444;
+        }
+         .dark-mode .header p { color: #bbbbbb; }
+         .dark-mode .header a { color: #66aaff; }
+         .dark-mode .section-title { color: #66aaff; border-bottom-color: #444444;}
+         .dark-mode .publication-list .title { color: #66aaff; }
+         .dark-mode .publication-list .authors { color: #cccccc; }
+         .dark-mode .publication-list .venue { color: #aaaaaa; }
+         .dark-mode .publication-list .links a { color: #88ccff; }
+         .dark-mode footer { background-color: #2a2a2a; color: #aaaaaa; border-top-color: #444444; }
+         .dark-mode body { color: #eeeeee; }
+
+        /* Portfolio styles */
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax */
+            gap: 15px; /* Reduced gap */
+            padding: 15px 0; /* Reduced padding */
+        }
+        .portfolio-item {
+            border: 1px solid #ccc;
+            border-radius: 6px; /* Slightly smaller radius */
+            padding: 12px; /* Reduced padding */
+            text-align: center;
+            background-color: #fdfdfd; 
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.9em;
+        }
+         .portfolio-item h4 {
+            font-size: 1.1em; /* Adjust heading size */
+            margin-bottom: 8px;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-4px); /* Reduced effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode .portfolio-item {
+            background-color: #333333;
+            border-color: #555555;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 767.98px) {
+            body {
+                font-size: 0.95rem; /* Slightly smaller base font on mobile */
+            }
+            .header {
+                padding: 20px 0; 
+            }
+            .header .col-md-3,
+            .header .col-md-9 {
+                text-align: center; /* Center everything in header */
+            }
+             .header .col-md-9 {
+                 margin-top: 15px;
+             }
+            .profile-pic {
+                max-width: 150px; /* Larger size for mobile */
+            }
+            .section-title {
+                 font-size: 1.4em;
+                 margin-top: 25px;
+            }
+            .list-item {
+                 padding-left: 5px; /* Minimal indent on mobile */
+            }
+             .container {
+                 padding-left: 15px;
+                 padding-right: 15px;
+             }
+        }
+    </style>
+</head>
+
+<!-- Header with KAUST Logo and Profile Picture -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="Xinliang-Liu.JPG" alt="Xinliang Liu" class="profile-pic img-fluid">
+        </div>
+        <div class="col-md-9 text-center text-md-start">
+             <img src="KAUST_logo.jpg" alt="KAUST Logo" style="max-height: 50px; margin-bottom: 10px;"> <!-- Smaller logo -->
+             <h1>Xinliang Liu</h1>
+             <p>Postdoctoral Fellow | <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a></p>
+             <p><a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a></p>
+             <p>
+                 <a href="mailto:xinliang.liu@kaust.edu.sa">xinliang.liu@kaust.edu.sa</a> |
+                 <a href="https://scholar.google.com/citations?user=9AsSTc4AAAAJ&hl=en" target="_blank">Google Scholar</a>
+             </p>
+        </div>
+    </div>
+  </div>
+</header>
+
 <body>
-<!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
-<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Xinliang Liu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- Load the element definition -->
-<script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
+    <!-- Dark Mode Toggle -->
+    <div class="text-end p-3">
+        <button id="darkModeToggle" class="btn btn-outline-primary">Toggle Dark Mode</button>
+    </div>
 
-<!-- Simply set the `src` attribute to your MD file and win -->
-<zero-md src="README.md"></zero-md>
+    <!-- About Me Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <p>I am currently a Postdoctoral Fellow at the <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a> at <a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a>, working with <a href="https://cemse.kaust.edu.sa/people/person/jinchao-xu" target="_blank">Prof. Jinchao Xu</a> since 2022. I am excited to announce that I will be joining the <a href="http://math.ouc.edu.cn/" target="_blank">School of Mathematical Sciences</a> at <a href="https://eweb.ouc.edu.cn/" target="_blank">Ocean University of China</a> as an Associate Professor soon.</p>
+        <p>I received my Ph.D. in Applied Mathematics from <a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a> in 2021, supervised by <a href="https://ins.sjtu.edu.cn/people/lzhang/home.html" target="_blank">Prof. Lei Zhang</a>. During my Ph.D., I was fortunate to spend time as a Visiting Scholar at the <a href="https://www.caltech.edu/" target="_blank">California Institute of Technology (Caltech)</a>, hosted by <a href="https://users.cms.caltech.edu/~owhadi/" target="_blank">Prof. Houman Owhadi</a> (2019-2020). Prior to my doctoral studies, I obtained my Master of Science in Applied Mathematics (2017) from <a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a> and my Bachelor of Science in Information and Computing Science (2012) from <a href="https://en.nbu.edu.cn/" target="_blank">Ningbo University</a>.</p>
+    </section>
 
-<video width="320" height="240" controls>
-  <source src="https://drive.google.com/uc?export=download&id=1K0wcFO_H18VHOqyxHzRpNJpBY0mkNnSG" type="video/mp4">
-  <source src="https://drive.google.com/uc?export=download&id=1K0wcFO_H18VHOqyxHzRpNJpBY0mkNnSG" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
+    <!-- Research Interests -->
+    <section id="research" class="container">
+        <h2 class="section-title">Research Interests</h2>
+        <p>My research focuses on developing efficient numerical methods and machine learning models for scientific computing problems, particularly those involving multiscale phenomena or described by partial differential equations (PDEs). Key areas include:</p>
+        <ul>
+            <li class="list-item">Numerical Homogenization & Multiscale Methods</li>
+            <li class="list-item">Multigrid and Domain Decomposition Methods</li>
+            <li class="list-item">Graph Neural Networks (GNNs) for Scientific Computing</li>
+            <li class="list-item">Neural Operators and AI for PDEs</li>
+            <li class="list-item">Kernel Methods</li>
+        </ul>
+        <p>My work has been published in leading journals and conferences such as the Journal of Computational Physics (JCP), SIAM Multiscale Modeling & Simulation (MMS), NeurIPS, and ICLR.</p>
+    </section>
 
+    <!-- Publications Section -->
+    <section id="publications" class="container">
+        <h2 class="section-title">Publications</h2>
+        <ol class="publication-list">
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:mB3voiENLucC" target="_blank">Dilated convolution neural operator for multiscale partial differential equations</a>
+                <span class="authors">B Xu, X Liu, L Zhang</span>
+                <span class="venue">Journal of Computational and Applied Mathematics 461, 116408, 2025</span>
+                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=16733577655121322993" target="_blank">Cited by 2</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:TFP_iSt0sucC" target="_blank">Newton informed neural operator for solving nonlinear partial differential equations</a>
+                <span class="authors">W Hao, X Liu, Y Yang</span>
+                <span class="venue">Advances in Neural Information Processing Systems 37 (NeurIPS), 120832-120860, 2024</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3001552329682394202,15503103576324999427" target="_blank">Cited by 6*</a></span>
+           </li>
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:_FxGoFyzp5QC" target="_blank">Mitigating spectral bias for the multiscale operator learning</a>
+                <span class="authors">X Liu, B Xu, S Cao, L Zhang</span>
+                <span class="venue">Journal of Computational Physics 506, 112944, 2024</span>
+                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=4621751029315038861,1254495781762297953" target="_blank">Cited by 50*</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:WF5omc3nYNoC" target="_blank">MgNO: Efficient Parameterization of Linear Operators via Multigrid</a>
+                <span class="authors">J He, X Liu, J Xu</span>
+                <span class="venue">ICLR 2024</span>
+                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=4854488223594303538" target="_blank">Cited by 21</a></span>
+            </li>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:Y0pCki6q_DkC" target="_blank">Framelet message passing</a>
+                 <span class="authors">X Liu, B Zhou, C Zhang, YG Wang</span>
+                 <span class="venue">arXiv preprint arXiv:2302.14806, 2023</span>
+                 <span class="links"><a href="https://arxiv.org/abs/2302.14806" target="_blank">arXiv:2302.14806</a> | <a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3340399975954273860,2251633743340559873" target="_blank">Cited by 9</a></span>
+            </li>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:UeHWp8X0CEIC" target="_blank">ACMP: Allen-Cahn Message Passing for Graph Neural Networks with Particle Phase Transition</a>
+                 <span class="authors">Y Wang, K Yi, X Liu, YG Wang, S Jin</span>
+                 <span class="venue">ICLR 2023 (Spotlight)</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=16596192032470483283,6539835635145457859" target="_blank">Cited by 76*</a></span>
+            </li>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:zYLM7Y9cAGgC" target="_blank">Well-conditioned spectral transforms for dynamic graph representation</a>
+                 <span class="authors">B Zhou, X Liu, Y Liu, Y Huang, P Lio, YG Wang</span>
+                 <span class="venue">Learning on Graphs Conference, 12: 1-12: 19, 2022</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=2139279317083231784,1389598207580722587" target="_blank">Cited by 11*</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:u-x6o8ySG0sC" target="_blank">Iterated numerical homogenization for multiscale elliptic equations with monotone nonlinearity</a>
+                <span class="authors">X Liu, E Chung, L Zhang</span>
+                <span class="venue">Multiscale Modeling & Simulation 19 (4), 1601-1632, 2021</span>
+                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=12370567684647645691" target="_blank">Cited by 7</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:2osOgNQ5qMEC" target="_blank">Generalized rough polyharmonic splines for multiscale pdes with rough coefficients</a>
+                <span class="authors">X Liu, L Zhang, S Zhu</span>
+                <span class="venue">Numer. Math. Theor. Meth. Appl. 14 (4), 862-892., 2021</span>
+                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=17565649788206609720" target="_blank">Cited by 5</a></span>
+            </li>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:eQOLeE2rZwMC" target="_blank">Optimal control for multiscale equations with rough coefficients</a>
+                 <span class="authors">Y Chen, X Liu, J Zeng, L Zhang</span>
+                 <span class="venue">Journal of Computational Mathematics 41 (5), 842-866, 2021</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=15439788382310094772,1404954926923203445" target="_blank">Cited by 2*</a></span>
+            </li>
+        </ol>
+    </section>
 
+    <!-- Education -->
+    <section id="education" class="container">
+        <h2 class="section-title">Education</h2>
+        <ul>
+            <li class="list-item"><strong><a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a></strong>, Postdoc (2022 - Present)<br><i>Advisor: <a href="https://cemse.kaust.edu.sa/people/person/jinchao-xu" target="_blank">Prof. Jinchao Xu</a></i></li>
+            <li class="list-item"><strong><a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a></strong>, Ph.D. in Applied Mathematics (2017 - 2021)<br><i>Advisor: <a href="https://ins.sjtu.edu.cn/people/lzhang/home.html" target="_blank">Prof. Lei Zhang</a></i></li>
+            <li class="list-item"><strong><a href="https://www.caltech.edu/" target="_blank">California Institute of Technology (Caltech)</a></strong>, Visiting Scholar (2019 - 2020)<br><i>Host: <a href="https://users.cms.caltech.edu/~owhadi/" target="_blank">Prof. Houman Owhadi</a></i></li>
+            <li class="list-item"><strong><a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a></strong>, Master of Science in Applied Mathematics (2014 - 2017)</li>
+            <li class="list-item"><strong><a href="https://en.nbu.edu.cn/" target="_blank">Ningbo University</a></strong>, Bachelor of Science in Information and Computing Science (2008 - 2012)</li>
+        </ul>
+    </section>
+
+    <!-- Professional Activities Section -->
+    <section id="activities" class="container">
+        <h2 class="section-title">Professional Activities</h2>
+        <ul>
+            <li class="list-item"><strong>Co-organizer:</strong> Special Session on <a href="https://aimsconference.org/AIMS-Conference/conf-reg2024/ss/changeApp12.php?ssid=125" target="_blank">Analysis, Algorithms, and Applications of Neural Networks</a> (with Juncai He and Jinchao Xu).<br><i>The 14th AIMS Conference on Dynamical Systems, Differential Equations and Applications (AIMS 2024), Abu Dhabi, UAE, December 15-19, 2024.</i></li>
+            <li class="list-item"><strong>Co-organizer:</strong> Minisymposium on Multigrid and Multilayer Methods (with Juncai He and Jinchao Xu).<br><i><a href="https://www.imgconf.org/" target="_blank">International Multigrid Conference (IMG2022)</a>, Lugano, Switzerland, August 22-26, 2022.</i></li>
+            <!-- Add other activities like reviews, talks etc. here -->
+        </ul>
+    </section>
+
+    <!-- Portfolio Section Placeholder -->
+    <section id="portfolio" class="container">
+        <h2 class="section-title">Portfolio / Code</h2>
+         <p class="text-center">This section can showcase key projects, software, or code repositories.</p>
+        <div class="portfolio">
+            <!-- Example Portfolio Item -->
+             <div class="portfolio-item">
+                 <h4>Project Title 1</h4>
+                 <p>Brief description of a key project or software package.</p>
+                 <a href="#" class="btn btn-sm btn-outline-primary">GitHub Repo</a>
+                 <a href="#" class="btn btn-sm btn-outline-secondary">Documentation</a>
+             </div>
+             <div class="portfolio-item">
+                 <h4>Project Title 2</h4>
+                 <p>Another example item.</p>
+                 <a href="#" class="btn btn-sm btn-outline-primary">Link</a>
+             </div>
+             <!-- Add more items as needed -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container text-center">
+        <h2 class="section-title">Contact</h2>
+        <p>Xinliang Liu</p>
+        <p>Extreme Computing Research Center (ECRC)</p>
+        <p>King Abdullah University of Science and Technology (KAUST)</p>
+        <p>Thuwal 23955-6900, Saudi Arabia</p>
+        <p>Email: <a href="mailto:xinliang.liu@kaust.edu.sa">xinliang.liu@kaust.edu.sa</a></p>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Xinliang Liu. All rights reserved.</p>
+            <!-- <p>Theme inspired by Bootstrap.</p> -->
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            // Save preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.removeItem('darkMode');
+            }
+        });
+    </script>
 </body>
 </html>
-
+            
