@@ -8,194 +8,214 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
     <style>
         body {
-            font-family: 'Georgia', serif; /* Classic serif font */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #ffffff; /* White background */
-            color: #333333; /* Dark grey text */
-            line-height: 1.6; /* Slightly reduced line height */
+            color: #212529; /* Bootstrap default dark text */
+            line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
             font-size: 1rem; /* Base font size */
         }
-        .dark-mode {
-            background-color: #222222; /* Dark background for dark mode */
-            color: #eeeeee; /* Light text for dark mode */
+        .dark-mode body { /* Combined for clarity */
+            background-color: #212529; /* Dark background */
+            color: #f8f9fa; /* Light text */
+            line-height: 1.6;
         }
         .navbar {
-            background-color: #003366; /* Dark blue navbar */
-            font-family: 'Arial', sans-serif; /* Sans-serif for nav */
+            background-color: #f8f9fa; /* Light grey navbar */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
         }
         .navbar a {
-            color: #ffffff;
+            color: #212529; /* Dark text for navbar links */
+        }
+        .navbar-brand, .nav-item .nav-link.active { /* More specific for active/brand */
+            color: #007bff !important; /* Bootstrap blue, ensure override if needed */
+        }
+        .dark-mode .navbar {
+            background-color: #343a40; /* Darker grey navbar */
+            border-bottom: 1px solid #495057; /* Subtle border */
+        }
+        .dark-mode .navbar a {
+            color: #f8f9fa; /* Light text for navbar links */
+        }
+        .dark-mode .navbar-brand, .dark-mode .nav-item .nav-link.active {
+            color: #80bfff !important; /* Lighter blue for dark mode */
         }
         .header {
-            background-color: #eef2f7; /* Light grey-blue header background */
-            color: #003366; /* Dark blue text */
+            background-color: #ffffff; /* White header */
+            color: #212529; /* Dark text */
             text-align: center;
-            padding: 25px 0; /* Reduced padding */
-            border-bottom: 1px solid #cccccc;
+            padding: 25px 0;
+            border-bottom: 1px solid #dee2e6; /* Standard Bootstrap border */
         }
         .header h1 {
-            font-family: 'Georgia', serif;
-            font-size: 2.2em; /* Slightly reduced */
-            margin-bottom: 8px; /* Reduced */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
+            font-size: 2.2em;
+            margin-bottom: 8px;
             font-weight: bold;
+            color: #212529;
         }
         .header p {
-            font-family: 'Arial', sans-serif;
-            font-size: 1.0em; /* Slightly reduced */
-            color: #555555;
-            margin-bottom: 5px; /* Reduced */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
+            font-size: 1.0em;
+            color: #6c757d; /* Bootstrap secondary text */
+            margin-bottom: 5px;
         }
         .header a {
-            color: #0056b3; /* Standard link blue */
+            color: #007bff; /* Bootstrap blue for links */
             text-decoration: none;
         }
         .header a:hover {
             text-decoration: underline;
         }
+        .dark-mode .header {
+            background-color: #212529; /* Dark header, same as body */
+            color: #f8f9fa; /* Light text */
+            border-bottom-color: #495057; /* Darker border */
+        }
+         .dark-mode .header p { color: #adb5bd; /* Lighter grey for paragraph */ }
+         .dark-mode .header a { color: #80bfff; /* Lighter blue for links */ }
         .profile-pic {
-            max-width: 180px; /* Larger size */
+            max-width: 180px;
             height: auto;
-            /* border-radius: 50%; */ /* Removed for regular shape */
-            margin-bottom: 10px; 
-            /* border: 2px solid #ffffff; */ /* Removed border */
+            margin-bottom: 10px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         .header .row {
-            align-items: center; /* Vertically align items in the row */
+            align-items: center;
         }
         .section-title {
-            font-family: 'Georgia', serif;
-            font-size: 1.6em; /* Reduced size */
-            margin-top: 30px; /* Reduced */
-            margin-bottom: 15px; /* Reduced */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
             text-align: center;
-            color: #003366; /* Dark blue titles */
-            border-bottom: 1px solid #eeeeee; /* Subtle separator */
-            padding-bottom: 8px; /* Reduced */
+            color: #212529; /* Dark text */
+            border-bottom: 1px solid #dee2e6; /* Standard Bootstrap border */
+            padding-bottom: 8px;
+        }
+        .dark-mode .section-title {
+            color: #f8f9fa; /* Light text for titles */
+            border-bottom-color: #495057; /* Darker border */
         }
         .list-item {
-            margin-bottom: 10px; /* Reduced spacing */
-            padding-left: 15px; /* Reduced indentation */
+            margin-bottom: 10px;
+            padding-left: 15px;
         }
         section {
-             padding-top: 15px; /* Add some top padding to sections */
-             padding-bottom: 15px; /* Add some bottom padding */
+             padding-top: 15px;
+             padding-bottom: 15px;
         }
         footer {
             background-color: #f8f9fa; /* Light grey footer */
-            color: #555555; /* Grey text */
+            color: #6c757d; /* Bootstrap secondary text */
             text-align: center;
-            padding: 15px 0; /* Reduced padding */
-            margin-top: 30px; /* Reduced */
-            border-top: 1px solid #dddddd;
-            font-family: 'Arial', sans-serif;
-            font-size: 0.85em; /* Slightly reduced */
+            padding: 15px 0;
+            margin-top: 30px;
+            border-top: 1px solid #dee2e6; /* Standard Bootstrap border */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
+            font-size: 0.85em;
+        }
+        .dark-mode footer {
+            background-color: #343a40; /* Darker grey footer */
+            color: #adb5bd; /* Lighter grey text */
+            border-top-color: #495057; /* Darker border */
         }
         .publication-list li {
-            margin-bottom: 1.2rem; /* Reduced space */
+            margin-bottom: 1.2rem;
             padding-left: 0;
         }
         .publication-list .title {
             font-weight: bold;
-            display: block; 
-            margin-bottom: 0.2rem; /* Reduced */
-            color: #003366;
-            font-size: 1.05em; /* Adjust if needed */
+            display: block;
+            margin-bottom: 0.2rem;
+            color: #007bff; /* Bootstrap blue for links */
+            font-size: 1.05em;
         }
         .publication-list .authors {
             font-style: italic;
             display: block;
-            margin-bottom: 0.2rem; /* Reduced */
-            color: #555555;
+            margin-bottom: 0.2rem;
+            color: #6c757d; /* Bootstrap secondary text */
             font-size: 0.95em;
         }
         .publication-list .venue {
             display: block;
-            margin-bottom: 0.2rem; /* Reduced */
-            color: #777777;
-            font-size: 0.9em; /* Reduced */
+            margin-bottom: 0.2rem;
+            color: #6c757d; /* Bootstrap secondary text */
+            font-size: 0.9em;
         }
          .publication-list .links a {
-            margin-right: 8px; /* Reduced */
-            font-size: 0.85em; /* Reduced */
+            margin-right: 8px;
+            font-size: 0.85em;
             text-decoration: none;
-            color: #0056b3;
+            color: #007bff; /* Bootstrap blue */
         }
         .publication-list .links a:hover {
             text-decoration: underline;
         }
-        /* Dark Mode Compact Adjustments */
-        .dark-mode {
-             line-height: 1.6;
-        }
-        .dark-mode .header {
-            background-color: #2a2a2a;
-            color: #eeeeee;
-            border-bottom-color: #444444;
-        }
-         .dark-mode .header p { color: #bbbbbb; }
-         .dark-mode .header a { color: #66aaff; }
-         .dark-mode .section-title { color: #66aaff; border-bottom-color: #444444;}
-         .dark-mode .publication-list .title { color: #66aaff; }
-         .dark-mode .publication-list .authors { color: #cccccc; }
-         .dark-mode .publication-list .venue { color: #aaaaaa; }
-         .dark-mode .publication-list .links a { color: #88ccff; }
-         .dark-mode footer { background-color: #2a2a2a; color: #aaaaaa; border-top-color: #444444; }
-         .dark-mode body { color: #eeeeee; }
+         .dark-mode .publication-list .title { color: #80bfff; /* Lighter blue */ }
+         .dark-mode .publication-list .authors { color: #adb5bd; /* Lighter grey */ }
+         .dark-mode .publication-list .venue { color: #adb5bd; /* Lighter grey */ }
+         .dark-mode .publication-list .links a { color: #80bfff; /* Lighter blue */ }
 
         /* Portfolio styles */
         .portfolio {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust minmax */
-            gap: 15px; /* Reduced gap */
-            padding: 15px 0; /* Reduced padding */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 15px 0;
         }
         .portfolio-item {
-            border: 1px solid #ccc;
-            border-radius: 6px; /* Slightly smaller radius */
-            padding: 12px; /* Reduced padding */
+            border: 1px solid #dee2e6; /* Standard border */
+            border-radius: 6px;
+            padding: 12px;
             text-align: center;
-            background-color: #fdfdfd; 
+            background-color: #fdfdfd; /* Slightly off-white */
             transition: transform 0.2s, box-shadow 0.2s;
             font-size: 0.9em;
         }
          .portfolio-item h4 {
-            font-size: 1.1em; /* Adjust heading size */
+            font-size: 1.1em;
             margin-bottom: 8px;
+            color: #212529; /* Dark text */
         }
         .portfolio-item:hover {
-            transform: translateY(-4px); /* Reduced effect */
+            transform: translateY(-4px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .dark-mode .portfolio-item {
-            background-color: #333333;
-            border-color: #555555;
+            background-color: #343a40; /* Dark background */
+            border-color: #495057; /* Darker border */
+            color: #f8f9fa; /* Light text */
+        }
+        .dark-mode .portfolio-item h4 {
+            color: #f8f9fa; /* Light text for heading in dark mode */
         }
 
-        /* Mobile Adjustments */
+        /* Mobile Adjustments - Retain existing, ensure compatibility */
         @media (max-width: 767.98px) {
             body {
-                font-size: 0.95rem; /* Slightly smaller base font on mobile */
+                font-size: 0.95rem;
             }
             .header {
-                padding: 20px 0; 
+                padding: 20px 0;
             }
             .header .col-md-3,
             .header .col-md-9 {
-                text-align: center; /* Center everything in header */
+                text-align: center;
             }
              .header .col-md-9 {
                  margin-top: 15px;
              }
             .profile-pic {
-                max-width: 150px; /* Larger size for mobile */
+                max-width: 150px;
             }
             .section-title {
                  font-size: 1.4em;
                  margin-top: 25px;
             }
             .list-item {
-                 padding-left: 5px; /* Minimal indent on mobile */
+                 padding-left: 5px;
             }
              .container {
                  padding-left: 15px;
@@ -256,8 +276,22 @@
     <!-- About Me Section -->
     <section id="about" class="container">
         <h2 class="section-title">About Me</h2>
-        <p>I am currently a Postdoctoral Fellow at the <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a> at <a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a>, working with <a href="https://cemse.kaust.edu.sa/people/person/jinchao-xu" target="_blank">Prof. Jinchao Xu</a> since 2022. I am excited to announce that I will be joining the <a href="http://math.ouc.edu.cn/" target="_blank">School of Mathematical Sciences</a> at <a href="https://eweb.ouc.edu.cn/" target="_blank">Ocean University of China</a> as an Associate Professor soon.</p>
+        <p>I am currently a Postdoctoral Fellow at the <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a> at <a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a>, working with <a href="https://cemse.kaust.edu.sa/people/person/jinchao-xu" target="_blank">Prof. Jinchao Xu</a> since 2022. </p>
         <p>I received my Ph.D. in Applied Mathematics from <a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a> in 2021, supervised by <a href="https://ins.sjtu.edu.cn/people/lzhang/home.html" target="_blank">Prof. Lei Zhang</a>. During my Ph.D., I was fortunate to spend time as a Visiting Scholar at the <a href="https://www.caltech.edu/" target="_blank">California Institute of Technology (Caltech)</a>, hosted by <a href="https://users.cms.caltech.edu/~owhadi/" target="_blank">Prof. Houman Owhadi</a> (2019-2020). Prior to my doctoral studies, I obtained my Master of Science in Applied Mathematics (2017) from <a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a> and my Bachelor of Science in Information and Computing Science (2012) from <a href="https://en.nbu.edu.cn/" target="_blank">Ningbo University</a>.</p>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="container">
+        <h2 class="section-title">News</h2>
+        <ul>
+            <li class="list-item"><strong>April 27 - May 2, 2025:</strong> I will attend the Oberwolfach Workshop on Computational Multiscale Methods. <a href="https://mfo.de/" target="_blank">[MFO]</a></li>
+            <li class="list-item"><strong>Soon:</strong> I am excited to announce that I will be joining the <a href="http://math.ouc.edu.cn/" target="_blank">School of Mathematical Sciences</a> at <a href="https://eweb.ouc.edu.cn/" target="_blank">Ocean University of China</a> as an tenure-track associate professor soon.</li>
+            <li class="list-item"><strong>June 2024:</strong> Honored to receive First Prize in the "AI for Science" competition hosted by the DeepModeling community on the Bohrium platform. Our model, MgNO, was a collaborative effort with <a href="https://juncaihe.github.io/" target="_blank">Juncai He</a> and Bo Xu (SJTU). <a href="https://bohrium.dp.tech/competitions/2512153120?tab=introduce" target="_blank">[Competition Details]</a></li>
+            
+            <!-- <li class="list-item"><strong>May 2025:</strong> Honored to receive the [Name of Competition] award for [Briefly describe achievement or project]. <a href="#">[Link to award page or details, if any]</a></li>
+            <li class="list-item"><strong>[Date]:</strong> [Another significant news item, e.g., upcoming talk, new collaboration, etc.]</li> -->
+            <!-- Add more news items here -->
+        </ul>
     </section>
 
     <!-- Research Interests -->
@@ -278,6 +312,18 @@
     <section id="publications" class="container">
         <h2 class="section-title">Publications</h2>
         <ol class="publication-list">
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=pBHiYxcAAAAJ&sortby=pubdate&citation_for_view=pBHiYxcAAAAJ:UnhBtiQKoKQC" target="_blank">Integral Representations of Sobolev Spaces via ReLU $^k$ Activation Function and Optimal Error Estimates for Linearized Networks</a>
+                <span class="authors">X Liu, T Mao, J Xu</span>
+                <span class="venue">arXiv preprint arXiv:2505.00351, 2025</span>
+                <span class="links"><a href="https://arxiv.org/abs/2505.00351" target="_blank">arXiv:2505.00351</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:Y0pCki6q_DkC" target="_blank">Framelet message passing</a>
+                <span class="authors">X Liu, B Zhou, C Zhang, YG Wang</span>
+                <span class="venue">arXiv preprint arXiv:2302.14806, 2023, to appear in Applied and Computational Harmonic Analysis</span>
+                <span class="links"><a href="https://arxiv.org/abs/2302.14806" target="_blank">arXiv:2302.14806</a> | <a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3340399975954273860,2251633743340559873" target="_blank">Cited by 9</a></span>
+           </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:mB3voiENLucC" target="_blank">Dilated convolution neural operator for multiscale partial differential equations</a>
                 <span class="authors">B Xu, X Liu, L Zhang</span>
@@ -301,12 +347,6 @@
                 <span class="authors">J He, X Liu, J Xu</span>
                 <span class="venue">ICLR 2024</span>
                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=4854488223594303538" target="_blank">Cited by 21</a></span>
-            </li>
-             <li>
-                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:Y0pCki6q_DkC" target="_blank">Framelet message passing</a>
-                 <span class="authors">X Liu, B Zhou, C Zhang, YG Wang</span>
-                 <span class="venue">arXiv preprint arXiv:2302.14806, 2023</span>
-                 <span class="links"><a href="https://arxiv.org/abs/2302.14806" target="_blank">arXiv:2302.14806</a> | <a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3340399975954273860,2251633743340559873" target="_blank">Cited by 9</a></span>
             </li>
              <li>
                  <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:UeHWp8X0CEIC" target="_blank">ACMP: Allen-Cahn Message Passing for Graph Neural Networks with Particle Phase Transition</a>
@@ -364,11 +404,11 @@
     </section>
 
     <!-- Portfolio Section Placeholder -->
-    <section id="portfolio" class="container">
+    <!-- <section id="portfolio" class="container">
         <h2 class="section-title">Portfolio / Code</h2>
          <p class="text-center">This section can showcase key projects, software, or code repositories.</p>
         <div class="portfolio">
-            <!-- Example Portfolio Item -->
+            Example Portfolio Item
              <div class="portfolio-item">
                  <h4>Project Title 1</h4>
                  <p>Brief description of a key project or software package.</p>
@@ -380,9 +420,9 @@
                  <p>Another example item.</p>
                  <a href="#" class="btn btn-sm btn-outline-primary">Link</a>
              </div>
-             <!-- Add more items as needed -->
+             Add more items as needed
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="container text-center">
@@ -423,4 +463,3 @@
     </script>
 </body>
 </html>
-            
