@@ -9,7 +9,70 @@
     
     <!-- MathJax for LaTeX formula rendering -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script id="MathJax-script" asy    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            // Save preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.removeItem('darkMode');
+            }
+        });
+
+        // Function to load and display markdown content
+        function loadMarkdownContent() {
+            const modal = new bootstrap.Modal(document.getElementById('markdownModal'));
+            const contentDiv = document.getElementById('markdownContent');
+            
+            // Show loading spinner
+            contentDiv.innerHTML = `
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            `;
+            
+            modal.show();
+            
+            // Fetch the markdown file
+            fetch('research-highlight-linearized-networks.md')
+                .then(response => response.text())
+                .then(markdownText => {
+                    // Initialize markdown-it
+                    const md = window.markdownit({
+                        html: true,
+                        linkify: true,
+                        typographer: true
+                    });
+                    
+                    // Render markdown to HTML
+                    const html = md.render(markdownText);
+                    contentDiv.innerHTML = html;
+                    
+                    // Re-render MathJax for the new content
+                    if (window.MathJax) {
+                        MathJax.typesetPromise([contentDiv]).catch(function (err) {
+                            console.log('MathJax typeset failed: ' + err.message);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading markdown:', error);
+                    contentDiv.innerHTML = '<p class="text-danger">Error loading content. Please try again.</p>';
+                });
+        }
+    </script>jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
         window.MathJax = {
             tex: {
@@ -21,81 +84,74 @@
     
     <!-- markdown-it for markdown rendering -->
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.1/dist/markdown-it.min.js"></script>
-    
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #212529;
+            background-color: #ffffff; /* White background */
+            color: #212529; /* Bootstrap default dark text */
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
-            font-size: 1rem;
+            font-size: 1rem; /* Base font size */
         }
-        .dark-mode {
-            background-color: #212529;
-            color: #f8f9fa;
+        .dark-mode body { /* Combined for clarity */
+            background-color: #212529; /* Dark background */
+            color: #f8f9fa; /* Light text */
+            line-height: 1.6;
         }
         .navbar {
-            background-color: #f8f9fa;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f8f9fa; /* Light grey navbar */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
         }
         .navbar a {
-            color: #212529;
+            color: #212529; /* Dark text for navbar links */
         }
-        .navbar-brand, .nav-item .nav-link.active {
-            color: #007bff !important;
+        .navbar-brand, .nav-item .nav-link.active { /* More specific for active/brand */
+            color: #007bff !important; /* Bootstrap blue, ensure override if needed */
         }
         .dark-mode .navbar {
-            background-color: #343a40;
-            border-bottom: 1px solid #495057;
+            background-color: #343a40; /* Darker grey navbar */
+            border-bottom: 1px solid #495057; /* Subtle border */
         }
         .dark-mode .navbar a {
-            color: #f8f9fa;
+            color: #f8f9fa; /* Light text for navbar links */
         }
         .dark-mode .navbar-brand, .dark-mode .nav-item .nav-link.active {
-            color: #80bfff !important;
+            color: #80bfff !important; /* Lighter blue for dark mode */
         }
         .header {
-            background-color: #ffffff;
-            color: #212529;
+            background-color: #ffffff; /* White header */
+            color: #212529; /* Dark text */
             text-align: center;
             padding: 25px 0;
-            border-bottom: 1px solid #dee2e6;
+            border-bottom: 1px solid #dee2e6; /* Standard Bootstrap border */
         }
         .header h1 {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
             font-size: 2.2em;
             margin-bottom: 8px;
             font-weight: bold;
             color: #212529;
         }
         .header p {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
             font-size: 1.0em;
-            color: #6c757d;
+            color: #6c757d; /* Bootstrap secondary text */
             margin-bottom: 5px;
         }
         .header a {
-            color: #007bff;
+            color: #007bff; /* Bootstrap blue for links */
             text-decoration: none;
         }
         .header a:hover {
             text-decoration: underline;
         }
         .dark-mode .header {
-            background-color: #212529;
-            color: #f8f9fa;
-            border-bottom-color: #495057;
+            background-color: #212529; /* Dark header, same as body */
+            color: #f8f9fa; /* Light text */
+            border-bottom-color: #495057; /* Darker border */
         }
-        .dark-mode .header h1 {
-            color: #f8f9fa;
-        }
-        .dark-mode .header p {
-            color: #adb5bd;
-        }
-        .dark-mode .header a {
-            color: #80bfff;
-        }
+         .dark-mode .header p { color: #adb5bd; /* Lighter grey for paragraph */ }
+         .dark-mode .header a { color: #80bfff; /* Lighter blue for links */ }
         .profile-pic {
             max-width: 180px;
             height: auto;
@@ -106,45 +162,41 @@
             align-items: center;
         }
         .section-title {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
             font-size: 1.6em;
             margin-top: 30px;
             margin-bottom: 15px;
             text-align: center;
-            color: #212529;
-            border-bottom: 1px solid #dee2e6;
+            color: #212529; /* Dark text */
+            border-bottom: 1px solid #dee2e6; /* Standard Bootstrap border */
             padding-bottom: 8px;
         }
         .dark-mode .section-title {
-            color: #f8f9fa;
-            border-bottom-color: #495057;
+            color: #f8f9fa; /* Light text for titles */
+            border-bottom-color: #495057; /* Darker border */
         }
         .list-item {
             margin-bottom: 10px;
             padding-left: 15px;
         }
         section {
-            padding-top: 15px;
-            padding-bottom: 15px;
+             padding-top: 15px;
+             padding-bottom: 15px;
         }
         footer {
-            background-color: #f8f9fa;
-            color: #6c757d;
+            background-color: #f8f9fa; /* Light grey footer */
+            color: #6c757d; /* Bootstrap secondary text */
             text-align: center;
             padding: 15px 0;
             margin-top: 30px;
-            border-top: 1px solid #dee2e6;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            border-top: 1px solid #dee2e6; /* Standard Bootstrap border */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Consistent sans-serif */
             font-size: 0.85em;
         }
         .dark-mode footer {
-            background-color: #343a40;
-            color: #adb5bd;
-            border-top-color: #495057;
-        }
-        .publication-list {
-            list-style: none;
-            padding-left: 0;
+            background-color: #343a40; /* Darker grey footer */
+            color: #adb5bd; /* Lighter grey text */
+            border-top-color: #495057; /* Darker border */
         }
         .publication-list li {
             margin-bottom: 1.2rem;
@@ -154,42 +206,68 @@
             font-weight: bold;
             display: block;
             margin-bottom: 0.2rem;
-            color: #007bff;
+            color: #007bff; /* Bootstrap blue for links */
             font-size: 1.05em;
         }
         .publication-list .authors {
             font-style: italic;
             display: block;
             margin-bottom: 0.2rem;
-            color: #6c757d;
+            color: #6c757d; /* Bootstrap secondary text */
             font-size: 0.95em;
         }
         .publication-list .venue {
             display: block;
             margin-bottom: 0.2rem;
-            color: #6c757d;
+            color: #6c757d; /* Bootstrap secondary text */
             font-size: 0.9em;
         }
-        .publication-list .links a {
+         .publication-list .links a {
             margin-right: 8px;
             font-size: 0.85em;
             text-decoration: none;
-            color: #007bff;
+            color: #007bff; /* Bootstrap blue */
         }
         .publication-list .links a:hover {
             text-decoration: underline;
         }
-        .dark-mode .publication-list .title {
-            color: #80bfff;
+         .dark-mode .publication-list .title { color: #80bfff; /* Lighter blue */ }
+         .dark-mode .publication-list .authors { color: #adb5bd; /* Lighter grey */ }
+         .dark-mode .publication-list .venue { color: #adb5bd; /* Lighter grey */ }
+         .dark-mode .publication-list .links a { color: #80bfff; /* Lighter blue */ }
+
+        /* Portfolio styles */
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 15px 0;
         }
-        .dark-mode .publication-list .authors {
-            color: #adb5bd;
+        .portfolio-item {
+            border: 1px solid #dee2e6; /* Standard border */
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+            background-color: #fdfdfd; /* Slightly off-white */
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-size: 0.9em;
         }
-        .dark-mode .publication-list .venue {
-            color: #adb5bd;
+         .portfolio-item h4 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            color: #212529; /* Dark text */
         }
-        .dark-mode .publication-list .links a {
-            color: #80bfff;
+        .portfolio-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode .portfolio-item {
+            background-color: #343a40; /* Dark background */
+            border-color: #495057; /* Darker border */
+            color: #f8f9fa; /* Light text */
+        }
+        .dark-mode .portfolio-item h4 {
+            color: #f8f9fa; /* Light text for heading in dark mode */
         }
 
         /* Markdown content styles */
@@ -285,7 +363,7 @@
             background-color: #343a40;
         }
 
-        /* Mobile Adjustments */
+        /* Mobile Adjustments - Retain existing, ensure compatibility */
         @media (max-width: 767.98px) {
             body {
                 font-size: 0.95rem;
@@ -297,49 +375,49 @@
             .header .col-md-9 {
                 text-align: center;
             }
-            .header .col-md-9 {
-                margin-top: 15px;
-            }
+             .header .col-md-9 {
+                 margin-top: 15px;
+             }
             .profile-pic {
                 max-width: 150px;
             }
             .section-title {
-                font-size: 1.4em;
-                margin-top: 25px;
+                 font-size: 1.4em;
+                 margin-top: 25px;
             }
             .list-item {
-                padding-left: 5px;
+                 padding-left: 5px;
             }
-            .container {
-                padding-left: 15px;
-                padding-right: 15px;
-            }
+             .container {
+                 padding-left: 15px;
+                 padding-right: 15px;
+             }
         }
     </style>
 </head>
 
-<body>
-    <!-- Header with KAUST Logo and Profile Picture -->
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 text-center">
-                    <img src="Xinliang-Liu.JPG" alt="Xinliang Liu" class="profile-pic img-fluid">
-                </div>
-                <div class="col-md-9 text-center text-md-start">
-                    <img src="KAUST_logo.jpg" alt="KAUST Logo" style="max-height: 50px; margin-bottom: 10px;">
-                    <h1>Xinliang Liu</h1>
-                    <p>Postdoctoral Fellow | <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a></p>
-                    <p><a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a></p>
-                    <p>
-                        <a href="mailto:xinliang.liu@kaust.edu.sa">xinliang.liu@kaust.edu.sa</a> |
-                        <a href="https://scholar.google.com/citations?user=9AsSTc4AAAAJ&hl=en" target="_blank">Google Scholar</a>
-                    </p>
-                </div>
-            </div>
+<!-- Header with KAUST Logo and Profile Picture -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-3 text-center">
+            <img src="Xinliang-Liu.JPG" alt="Xinliang Liu" class="profile-pic img-fluid">
         </div>
-    </header>
+        <div class="col-md-9 text-center text-md-start">
+             <img src="KAUST_logo.jpg" alt="KAUST Logo" style="max-height: 50px; margin-bottom: 10px;"> <!-- Smaller logo -->
+             <h1>Xinliang Liu</h1>
+             <p>Postdoctoral Fellow | <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a></p>
+             <p><a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a></p>
+             <p>
+                 <a href="mailto:xinliang.liu@kaust.edu.sa">xinliang.liu@kaust.edu.sa</a> |
+                 <a href="https://scholar.google.com/citations?user=9AsSTc4AAAAJ&hl=en" target="_blank">Google Scholar</a>
+             </p>
+        </div>
+    </div>
+  </div>
+</header>
 
+<body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -350,11 +428,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
                     <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
                     <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -369,7 +447,7 @@
     <!-- About Me Section -->
     <section id="about" class="container">
         <h2 class="section-title">About Me</h2>
-        <p>I am currently a Postdoctoral Fellow at the <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a> at <a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a>, working with <a href="https://cemse.kaust.edu.sa/people/person/jinchao-xu" target="_blank">Prof. Jinchao Xu</a> since 2022.</p>
+        <p>I am currently a Postdoctoral Fellow at the <a href="https://ecrc.kaust.edu.sa/" target="_blank">Extreme Computing Research Center (ECRC)</a> at <a href="https://www.kaust.edu.sa/en" target="_blank">King Abdullah University of Science and Technology (KAUST)</a>, working with <a href="https://cemse.kaust.edu.sa/people/person/jinchao-xu" target="_blank">Prof. Jinchao Xu</a> since 2022. </p>
         <p>I received my Ph.D. in Applied Mathematics from <a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a> in 2021, supervised by <a href="https://ins.sjtu.edu.cn/people/lzhang/home.html" target="_blank">Prof. Lei Zhang</a>. During my Ph.D., I was fortunate to spend time as a Visiting Scholar at the <a href="https://www.caltech.edu/" target="_blank">California Institute of Technology (Caltech)</a>, hosted by <a href="https://users.cms.caltech.edu/~owhadi/" target="_blank">Prof. Houman Owhadi</a> (2019-2020). Prior to my doctoral studies, I obtained my Master of Science in Applied Mathematics (2017) from <a href="https://en.sjtu.edu.cn/" target="_blank">Shanghai Jiao Tong University</a> and my Bachelor of Science in Information and Computing Science (2012) from <a href="https://en.nbu.edu.cn/" target="_blank">Ningbo University</a>.</p>
     </section>
 
@@ -379,8 +457,12 @@
         <ul>
             <li class="list-item"><strong>Recent Research Highlight:</strong> 化繁为简：线性化神经网络何以实现最优逼近？ <a href="#" onclick="loadMarkdownContent()" style="color: #007bff;">[Read Full Article]</a></li>
             <li class="list-item"><strong>April 27 - May 2, 2025:</strong> I will attend the Oberwolfach Workshop on Computational Multiscale Methods. <a href="https://mfo.de/" target="_blank">[MFO]</a></li>
-            <li class="list-item"><strong>Soon:</strong> I am excited to announce that I will be joining the <a href="http://math.ouc.edu.cn/" target="_blank">School of Mathematical Sciences</a> at <a href="https://eweb.ouc.edu.cn/" target="_blank">Ocean University of China</a> as a tenure-track associate professor soon.</li>
+            <li class="list-item"><strong>Soon:</strong> I am excited to announce that I will be joining the <a href="http://math.ouc.edu.cn/" target="_blank">School of Mathematical Sciences</a> at <a href="https://eweb.ouc.edu.cn/" target="_blank">Ocean University of China</a> as an tenure-track associate professor soon.</li>
             <li class="list-item"><strong>June 2024:</strong> Honored to receive First Prize in the "AI for Science" competition hosted by the DeepModeling community on the Bohrium platform. Our model, MgNO, was a collaborative effort with <a href="https://juncaihe.github.io/" target="_blank">Juncai He</a> and Bo Xu (SJTU). <a href="https://bohrium.dp.tech/competitions/2512153120?tab=introduce" target="_blank">[Competition Details]</a></li>
+            
+            <!-- <li class="list-item"><strong>May 2025:</strong> Honored to receive the [Name of Competition] award for [Briefly describe achievement or project]. <a href="#">[Link to award page or details, if any]</a></li>
+            <li class="list-item"><strong>[Date]:</strong> [Another significant news item, e.g., upcoming talk, new collaboration, etc.]</li> -->
+            <!-- Add more news items here -->
         </ul>
     </section>
 
@@ -413,7 +495,7 @@
                 <span class="authors">X Liu, B Zhou, C Zhang, YG Wang</span>
                 <span class="venue">arXiv preprint arXiv:2302.14806, 2023, to appear in Applied and Computational Harmonic Analysis</span>
                 <span class="links"><a href="https://arxiv.org/abs/2302.14806" target="_blank">arXiv:2302.14806</a> | <a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3340399975954273860,2251633743340559873" target="_blank">Cited by 9</a></span>
-            </li>
+           </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:mB3voiENLucC" target="_blank">Dilated convolution neural operator for multiscale partial differential equations</a>
                 <span class="authors">B Xu, X Liu, L Zhang</span>
@@ -424,8 +506,8 @@
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:TFP_iSt0sucC" target="_blank">Newton informed neural operator for solving nonlinear partial differential equations</a>
                 <span class="authors">W Hao, X Liu, Y Yang</span>
                 <span class="venue">Advances in Neural Information Processing Systems 37 (NeurIPS), 120832-120860, 2024</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3001552329682394202,15503103576324999427" target="_blank">Cited by 6*</a></span>
-            </li>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3001552329682394202,15503103576324999427" target="_blank">Cited by 6*</a></span>
+           </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:_FxGoFyzp5QC" target="_blank">Mitigating spectral bias for the multiscale operator learning</a>
                 <span class="authors">X Liu, B Xu, S Cao, L Zhang</span>
@@ -438,17 +520,17 @@
                 <span class="venue">ICLR 2024</span>
                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=4854488223594303538" target="_blank">Cited by 21</a></span>
             </li>
-            <li>
-                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:UeHWp8X0CEIC" target="_blank">ACMP: Allen-Cahn Message Passing for Graph Neural Networks with Particle Phase Transition</a>
-                <span class="authors">Y Wang, K Yi, X Liu, YG Wang, S Jin</span>
-                <span class="venue">ICLR 2023 (Spotlight)</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=16596192032470483283,6539835635145457859" target="_blank">Cited by 76*</a></span>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:UeHWp8X0CEIC" target="_blank">ACMP: Allen-Cahn Message Passing for Graph Neural Networks with Particle Phase Transition</a>
+                 <span class="authors">Y Wang, K Yi, X Liu, YG Wang, S Jin</span>
+                 <span class="venue">ICLR 2023 (Spotlight)</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=16596192032470483283,6539835635145457859" target="_blank">Cited by 76*</a></span>
             </li>
-            <li>
-                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:zYLM7Y9cAGgC" target="_blank">Well-conditioned spectral transforms for dynamic graph representation</a>
-                <span class="authors">B Zhou, X Liu, Y Liu, Y Huang, P Lio, YG Wang</span>
-                <span class="venue">Learning on Graphs Conference, 12: 1-12: 19, 2022</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=2139279317083231784,1389598207580722587" target="_blank">Cited by 11*</a></span>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:zYLM7Y9cAGgC" target="_blank">Well-conditioned spectral transforms for dynamic graph representation</a>
+                 <span class="authors">B Zhou, X Liu, Y Liu, Y Huang, P Lio, YG Wang</span>
+                 <span class="venue">Learning on Graphs Conference, 12: 1-12: 19, 2022</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=2139279317083231784,1389598207580722587" target="_blank">Cited by 11*</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:u-x6o8ySG0sC" target="_blank">Iterated numerical homogenization for multiscale elliptic equations with monotone nonlinearity</a>
@@ -462,11 +544,11 @@
                 <span class="venue">Numer. Math. Theor. Meth. Appl. 14 (4), 862-892., 2021</span>
                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=17565649788206609720" target="_blank">Cited by 5</a></span>
             </li>
-            <li>
-                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:eQOLeE2rZwMC" target="_blank">Optimal control for multiscale equations with rough coefficients</a>
-                <span class="authors">Y Chen, X Liu, J Zeng, L Zhang</span>
-                <span class="venue">Journal of Computational Mathematics 41 (5), 842-866, 2021</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=15439788382310094772,1404954926923203445" target="_blank">Cited by 2*</a></span>
+             <li>
+                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:eQOLeE2rZwMC" target="_blank">Optimal control for multiscale equations with rough coefficients</a>
+                 <span class="authors">Y Chen, X Liu, J Zeng, L Zhang</span>
+                 <span class="venue">Journal of Computational Mathematics 41 (5), 842-866, 2021</span>
+                 <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=15439788382310094772,1404954926923203445" target="_blank">Cited by 2*</a></span>
             </li>
         </ol>
     </section>
@@ -489,8 +571,30 @@
         <ul>
             <li class="list-item"><strong>Co-organizer:</strong> Special Session on <a href="https://aimsconference.org/AIMS-Conference/conf-reg2024/ss/changeApp12.php?ssid=125" target="_blank">Analysis, Algorithms, and Applications of Neural Networks</a> (with Juncai He and Jinchao Xu).<br><i>The 14th AIMS Conference on Dynamical Systems, Differential Equations and Applications (AIMS 2024), Abu Dhabi, UAE, December 15-19, 2024.</i></li>
             <li class="list-item"><strong>Co-organizer:</strong> Minisymposium on Multigrid and Multilayer Methods (with Juncai He and Jinchao Xu).<br><i><a href="https://www.imgconf.org/" target="_blank">International Multigrid Conference (IMG2022)</a>, Lugano, Switzerland, August 22-26, 2022.</i></li>
+            <!-- Add other activities like reviews, talks etc. here -->
         </ul>
     </section>
+
+    <!-- Portfolio Section Placeholder -->
+    <!-- <section id="portfolio" class="container">
+        <h2 class="section-title">Portfolio / Code</h2>
+         <p class="text-center">This section can showcase key projects, software, or code repositories.</p>
+        <div class="portfolio">
+            Example Portfolio Item
+             <div class="portfolio-item">
+                 <h4>Project Title 1</h4>
+                 <p>Brief description of a key project or software package.</p>
+                 <a href="#" class="btn btn-sm btn-outline-primary">GitHub Repo</a>
+                 <a href="#" class="btn btn-sm btn-outline-secondary">Documentation</a>
+             </div>
+             <div class="portfolio-item">
+                 <h4>Project Title 2</h4>
+                 <p>Another example item.</p>
+                 <a href="#" class="btn btn-sm btn-outline-primary">Link</a>
+             </div>
+             Add more items as needed
+        </div>
+    </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="container text-center">
@@ -524,12 +628,12 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 Xinliang Liu. All rights reserved.</p>
+            <!-- <p>Theme inspired by Bootstrap.</p> -->
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Dark mode functionality
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
 
@@ -547,55 +651,6 @@
                 localStorage.removeItem('darkMode');
             }
         });
-
-        // Function to load and display markdown content
-        function loadMarkdownContent() {
-            const modal = new bootstrap.Modal(document.getElementById('markdownModal'));
-            const contentDiv = document.getElementById('markdownContent');
-            
-            // Show loading spinner
-            contentDiv.innerHTML = `
-                <div class="text-center">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            `;
-            
-            modal.show();
-            
-            // Fetch the markdown file
-            fetch('research-highlight-linearized-networks.md')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(markdownText => {
-                    // Initialize markdown-it
-                    const md = window.markdownit({
-                        html: true,
-                        linkify: true,
-                        typographer: true
-                    });
-                    
-                    // Render markdown to HTML
-                    const html = md.render(markdownText);
-                    contentDiv.innerHTML = html;
-                    
-                    // Re-render MathJax for the new content
-                    if (window.MathJax) {
-                        MathJax.typesetPromise([contentDiv]).catch(function (err) {
-                            console.log('MathJax typeset failed: ' + err.message);
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading markdown:', error);
-                    contentDiv.innerHTML = '<p class="text-danger">Error loading content. Please try again later.</p>';
-                });
-        }
     </script>
 </body>
 </html>
