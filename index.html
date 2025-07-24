@@ -97,7 +97,7 @@
             color: #80bfff;
         }
         .profile-pic {
-            max-width: 180px;
+            max-width: 220px;
             height: auto;
             margin-bottom: 10px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -190,6 +190,11 @@
         }
         .dark-mode .publication-list .links a {
             color: #80bfff;
+        }
+
+        /* Publication subsection headers */
+        .dark-mode h3 {
+            color: #80bfff !important;
         }
 
         /* Markdown content styles */
@@ -324,7 +329,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 text-center">
-                    <img src="Xinliang-Liu.JPG" alt="Xinliang Liu" class="profile-pic img-fluid">
+                    <img src="Xinliang-Liu-min.JPG" alt="Xinliang Liu" class="profile-pic img-fluid">
                 </div>
                 <div class="col-md-9 text-center text-md-start">
                     <img src="KAUST_logo.jpg" alt="KAUST Logo" style="max-height: 50px; margin-bottom: 10px;">
@@ -377,9 +382,7 @@
     <section id="news" class="container">
         <h2 class="section-title">News</h2>
         <ul>
-            <li class="list-item"><strong>Recent Research Highlight:</strong> 化繁为简：线性化神经网络何以实现最优逼近？ <a href="#" onclick="loadMarkdownContent()" style="color: #007bff;">[Read Full Article]</a></li>
             <li class="list-item"><strong>April 27 - May 2, 2025:</strong> I will attend the Oberwolfach Workshop on Computational Multiscale Methods. <a href="https://mfo.de/" target="_blank">[MFO]</a></li>
-            <li class="list-item"><strong>Soon:</strong> I am excited to announce that I will be joining the <a href="http://math.ouc.edu.cn/" target="_blank">School of Mathematical Sciences</a> at <a href="https://eweb.ouc.edu.cn/" target="_blank">Ocean University of China</a> as a tenure-track associate professor soon.</li>
             <li class="list-item"><strong>June 2024:</strong> Honored to receive First Prize in the "AI for Science" competition hosted by the DeepModeling community on the Bohrium platform. Our model, MgNO, was a collaborative effort with <a href="https://juncaihe.github.io/" target="_blank">Juncai He</a> and Bo Xu (SJTU). <a href="https://bohrium.dp.tech/competitions/2512153120?tab=introduce" target="_blank">[Competition Details]</a></li>
         </ul>
     </section>
@@ -401,72 +404,94 @@
     <!-- Publications Section -->
     <section id="publications" class="container">
         <h2 class="section-title">Publications</h2>
+        
+        <!-- Preprints Section -->
+        <h3 style="font-size: 1.3em; margin-top: 25px; margin-bottom: 15px; color: #007bff; text-align: left;">Preprints</h3>
         <ol class="publication-list">
+            <li>
+                <a class="title" href="https://arxiv.org/abs/2507.16344" target="_blank">Diff-ANO: Towards Fast High-Resolution Ultrasound Computed Tomography via Conditional Consistency Models and Adjoint Neural Operators</a>
+                <span class="authors">X Cao, Q Ding, X Liu, L Zhang, X Zhang</span>
+                <span class="venue">arXiv preprint arXiv:2507.16344, 2025</span>
+                <span class="links"><a href="https://arxiv.org/abs/2507.16344" target="_blank">arXiv:2507.16344</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://arxiv.org/abs/2507.15035" target="_blank">OpenBreastUS: Benchmarking Neural Operators for Wave Imaging Using Breast Ultrasound Computed Tomography</a>
+                <span class="authors">Z Zeng, Y Zheng, H Hu, Z Dong, Y Zheng, X Liu, J Wang, Z Shi, L Zhang</span>
+                <span class="venue">arXiv preprint arXiv:2507.15035, 2025</span>
+                <span class="links"><a href="https://arxiv.org/abs/2507.15035" target="_blank">arXiv:2507.15035</a></span>
+            </li>
+            <li>
+                <a class="title" href="https://arxiv.org/abs/2505.19432" target="_blank">Advanced long-term earth system forecasting by learning the small-scale nature</a>
+                <span class="authors">H Wu, Y Gao, R Shu, K Wang, R Gou, C Wu, X Liu, J He, S Cao, J Xu</span>
+                <span class="venue">arXiv preprint arXiv:2505.19432, 2025</span>
+                <span class="links"><a href="https://arxiv.org/abs/2505.19432" target="_blank">arXiv:2505.19432</a></span>
+            </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=pBHiYxcAAAAJ&sortby=pubdate&citation_for_view=pBHiYxcAAAAJ:UnhBtiQKoKQC" target="_blank">Integral Representations of Sobolev Spaces via ReLU $^k$ Activation Function and Optimal Error Estimates for Linearized Networks</a>
                 <span class="authors">X Liu, T Mao, J Xu</span>
                 <span class="venue">arXiv preprint arXiv:2505.00351, 2025</span>
                 <span class="links"><a href="https://arxiv.org/abs/2505.00351" target="_blank">arXiv:2505.00351</a></span>
             </li>
+        </ol>
+        
+        <!-- Published Papers Section -->
+        <h3 style="font-size: 1.3em; margin-top: 35px; margin-bottom: 15px; color: #007bff; text-align: left;">Published Papers</h3>
+        <ol class="publication-list">
             <li>
-                <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:Y0pCki6q_DkC" target="_blank">Framelet message passing</a>
+                <a class="title" href="https://link.springer.com/chapter/10.1007/978-981-96-2983-1_81" target="_blank">A MGNO method for multiphase flow in porous media</a>
+                <span class="authors">X Liu, X Yang, CS Zhang, L Zhang, L Zhao</span>
+                <span class="venue">Annual Meeting Conference, 2024</span>
+            </li>
+            <li>
+                <a class="title" href="https://www.sciencedirect.com/science/article/pii/S1063520325000272" target="_blank">Framelet message passing</a>
                 <span class="authors">X Liu, B Zhou, C Zhang, YG Wang</span>
-                <span class="venue">arXiv preprint arXiv:2302.14806, 2023, to appear in Applied and Computational Harmonic Analysis</span>
-                <span class="links"><a href="https://arxiv.org/abs/2302.14806" target="_blank">arXiv:2302.14806</a> | <a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3340399975954273860,2251633743340559873" target="_blank">Cited by 9</a></span>
+                <span class="venue">Applied and Computational Harmonic Analysis 78, 101773, 2025</span>
+                <span class="links"><a href="https://arxiv.org/abs/2302.14806" target="_blank">arXiv:2302.14806</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:mB3voiENLucC" target="_blank">Dilated convolution neural operator for multiscale partial differential equations</a>
-                <span class="authors">B Xu, X Liu, L Zhang</span>
+                <span class="authors">B Xu, X Liu<sup>#</sup>, L Zhang</span>
                 <span class="venue">Journal of Computational and Applied Mathematics 461, 116408, 2025</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=16733577655121322993" target="_blank">Cited by 2</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:TFP_iSt0sucC" target="_blank">Newton informed neural operator for solving nonlinear partial differential equations</a>
                 <span class="authors">W Hao, X Liu, Y Yang</span>
                 <span class="venue">Advances in Neural Information Processing Systems 37 (NeurIPS), 120832-120860, 2024</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=3001552329682394202,15503103576324999427" target="_blank">Cited by 6*</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:_FxGoFyzp5QC" target="_blank">Mitigating spectral bias for the multiscale operator learning</a>
                 <span class="authors">X Liu, B Xu, S Cao, L Zhang</span>
                 <span class="venue">Journal of Computational Physics 506, 112944, 2024</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=4621751029315038861,1254495781762297953" target="_blank">Cited by 50*</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:WF5omc3nYNoC" target="_blank">MgNO: Efficient Parameterization of Linear Operators via Multigrid</a>
-                <span class="authors">J He, X Liu, J Xu</span>
+                <span class="authors">J He, X Liu<sup>#</sup>, J Xu</span>
                 <span class="venue">ICLR 2024</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=4854488223594303538" target="_blank">Cited by 21</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:UeHWp8X0CEIC" target="_blank">ACMP: Allen-Cahn Message Passing for Graph Neural Networks with Particle Phase Transition</a>
                 <span class="authors">Y Wang, K Yi, X Liu, YG Wang, S Jin</span>
                 <span class="venue">ICLR 2023 (Spotlight)</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=16596192032470483283,6539835635145457859" target="_blank">Cited by 76*</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:zYLM7Y9cAGgC" target="_blank">Well-conditioned spectral transforms for dynamic graph representation</a>
                 <span class="authors">B Zhou, X Liu, Y Liu, Y Huang, P Lio, YG Wang</span>
                 <span class="venue">Learning on Graphs Conference, 12: 1-12: 19, 2022</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=2139279317083231784,1389598207580722587" target="_blank">Cited by 11*</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:u-x6o8ySG0sC" target="_blank">Iterated numerical homogenization for multiscale elliptic equations with monotone nonlinearity</a>
                 <span class="authors">X Liu, E Chung, L Zhang</span>
                 <span class="venue">Multiscale Modeling & Simulation 19 (4), 1601-1632, 2021</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=12370567684647645691" target="_blank">Cited by 7</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:2osOgNQ5qMEC" target="_blank">Generalized rough polyharmonic splines for multiscale pdes with rough coefficients</a>
                 <span class="authors">X Liu, L Zhang, S Zhu</span>
                 <span class="venue">Numer. Math. Theor. Meth. Appl. 14 (4), 862-892., 2021</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=17565649788206609720" target="_blank">Cited by 5</a></span>
             </li>
             <li>
                 <a class="title" href="https://scholar.google.com/citations?view_op=view_citation&hl=en&oe=ASCII&user=9AsSTc4AAAAJ&citation_for_view=9AsSTc4AAAAJ:eQOLeE2rZwMC" target="_blank">Optimal control for multiscale equations with rough coefficients</a>
                 <span class="authors">Y Chen, X Liu, J Zeng, L Zhang</span>
                 <span class="venue">Journal of Computational Mathematics 41 (5), 842-866, 2021</span>
-                <span class="links"><a href="https://scholar.google.com/scholar?oi=bibs&hl=en&oe=ASCII&cites=15439788382310094772,1404954926923203445" target="_blank">Cited by 2*</a></span>
             </li>
         </ol>
     </section>
@@ -502,25 +527,6 @@
         <p>Email: <a href="mailto:xinliang.liu@kaust.edu.sa">xinliang.liu@kaust.edu.sa</a></p>
     </section>
 
-    <!-- Modal for Markdown Content -->
-    <div class="modal fade" id="markdownModal" tabindex="-1" aria-labelledby="markdownModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="markdownModalLabel">Research Highlight</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body markdown-content" id="markdownContent">
-                    <div class="text-center">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer>
         <div class="container">
             <p>&copy; 2024 Xinliang Liu. All rights reserved.</p>
@@ -547,55 +553,6 @@
                 localStorage.removeItem('darkMode');
             }
         });
-
-        // Function to load and display markdown content
-        function loadMarkdownContent() {
-            const modal = new bootstrap.Modal(document.getElementById('markdownModal'));
-            const contentDiv = document.getElementById('markdownContent');
-            
-            // Show loading spinner
-            contentDiv.innerHTML = `
-                <div class="text-center">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            `;
-            
-            modal.show();
-            
-            // Fetch the markdown file
-            fetch('research-highlight-linearized-networks.md')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.text();
-                })
-                .then(markdownText => {
-                    // Initialize markdown-it
-                    const md = window.markdownit({
-                        html: true,
-                        linkify: true,
-                        typographer: true
-                    });
-                    
-                    // Render markdown to HTML
-                    const html = md.render(markdownText);
-                    contentDiv.innerHTML = html;
-                    
-                    // Re-render MathJax for the new content
-                    if (window.MathJax) {
-                        MathJax.typesetPromise([contentDiv]).catch(function (err) {
-                            console.log('MathJax typeset failed: ' + err.message);
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading markdown:', error);
-                    contentDiv.innerHTML = '<p class="text-danger">Error loading content. Please try again later.</p>';
-                });
-        }
     </script>
 </body>
 </html>
