@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="252" viewBox="0 0 360 252" role="img" aria-labelledby="title desc">
+  <title id="title">Newton-informed neural operator: learn the correction</title>
+  <desc id="desc">For a nonlinear PDE F(u)=0, the neural operator predicts a Newton correction. Add it to the current iterate and repeat. During training, the correction is constrained by the linearized equation F prime of u times delta u equals minus F of u.</desc>
+  <!-- Conceptual sketch of Hao, Liu and Yang, NeurIPS 2024. Not experimental data. -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="none" stroke="#57636b" stroke-width="1.6"/></marker>
+  </defs>
+  <rect x="1" y="1" width="358" height="250" rx="6" fill="#f8fbfc" stroke="#e5ecef"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#333" text-anchor="middle">
+    <text x="180" y="27" font-size="20" font-weight="600">Learn the Newton correction</text>
+    <rect x="12" y="54" width="70" height="62" rx="5" fill="#f5f7f8" stroke="#ccd3d7"/>
+    <text x="47" y="92" font-size="25" font-style="italic">u<tspan dy="5" font-size="15">k</tspan></text>
+    <path d="M83 85H110" stroke="#57636b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="114" y="54" width="124" height="62" rx="5" fill="#edf8fb" stroke="#0d98ba" stroke-width="1.5"/>
+    <text x="176" y="79" font-size="16">Neural operator</text>
+    <text x="176" y="103" font-size="22">δu = O<tspan font-size="14">θ</tspan>(u<tspan font-size="14">k</tspan>)</text>
+    <path d="M239 85H265" stroke="#57636b" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="282" cy="85" r="14" fill="#fff" stroke="#57636b" stroke-width="1.5"/>
+    <text x="282" y="92" font-size="25">+</text>
+    <path d="M297 85H317" stroke="#57636b" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="335" y="92" font-size="23" font-style="italic">u<tspan dy="5" font-size="12">k+1</tspan></text>
+    <path d="M47 54V40H282V69" fill="none" stroke="#a3adb4" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <path d="M335 107V143H47V119" fill="none" stroke="#57636b" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="141" y="131" width="78" height="24" fill="#f8fbfc"/>
+    <text x="180" y="149" font-size="17" fill="#646769">Repeat</text>
+    <path d="M12 169H348" stroke="#e5e9ec"/>
+    <text x="180" y="195" font-size="18" fill="#646769">Newton-informed training</text>
+    <text x="180" y="225" font-size="25">F′(u) δu ≈ −F(u)</text>
+  </g>
+</svg>

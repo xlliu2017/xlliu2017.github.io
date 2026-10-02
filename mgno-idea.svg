@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" role="img" aria-labelledby="title desc">
+<title id="title">Local detail. Global coupling.</title><desc id="desc">A learnable multigrid V-cycle descends from fine to coarse grids by restriction and returns by prolongation and correction. MgNO uses this structure to parameterize linear operators.</desc>
+<!-- Source: He, Liu, Xu. MgNO, ICLR 2024, arXiv:2310.19809. -->
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10" fill="none" stroke="#0d98ba" stroke-width="1.5"/></marker></defs>
+<rect x="1" y="1" width="478" height="278" rx="8" fill="#f8fbfc" stroke="#e5ecef"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#263b47" text-anchor="middle">
+<text x="240" y="39" font-size="28" font-weight="700">Local detail. Global coupling.</text>
+<g stroke="#0d98ba" stroke-width="2.5" marker-end="url(#a)"><path d="M97 108L157 150"/><path d="M189 176L218 195"/><path d="M263 195L292 176"/><path d="M323 150L383 108"/></g>
+<g fill="#e4f4f8" stroke="#0d98ba"><rect x="35" y="78" width="80" height="26"/><rect x="365" y="78" width="80" height="26"/><rect x="141" y="151" width="56" height="21"/><rect x="283" y="151" width="56" height="21"/><rect x="220" y="193" width="40" height="18"/></g>
+<g stroke="#8fcddd"><path d="M45 78V104M55 78V104M65 78V104M75 78V104M85 78V104M95 78V104M105 78V104M375 78V104M385 78V104M395 78V104M405 78V104M415 78V104M425 78V104M435 78V104M155 151V172M169 151V172M183 151V172M297 151V172M311 151V172M325 151V172M240 193V211"/></g>
+<g font-size="20" fill="#647680"><text x="75" y="68">Fine</text><text x="405" y="68">Fine</text><text x="240" y="181">Coarse</text><text x="86" y="166">Restrict</text><text x="394" y="166">Prolong</text></g>
+<text x="240" y="252" font-size="23">Learn the multigrid V-cycle</text>
+</g></svg>

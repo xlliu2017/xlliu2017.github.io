@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" role="img" aria-labelledby="title desc">
+<title id="title">Fix the features. Fit the coefficients.</title><desc id="desc">Linearized ReLU power networks keep their inner parameters w and b fixed and fit the linear coefficients a. Sobolev integral representations explain their approximation power. Optimal rates require the paper's regularity and parameter-distribution assumptions.</desc>
+<!-- Source: Liu, Mao, Xu. arXiv:2505.00351, accepted Mathematics of Computation. -->
+<rect x="1" y="1" width="478" height="278" rx="8" fill="#f8fbfc" stroke="#e5ecef"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#263b47" text-anchor="middle">
+<text x="240" y="39" font-size="28" font-weight="700">Fix the features.</text><text x="240" y="73" font-size="28" font-weight="700">Fit the coefficients.</text>
+<text x="240" y="129" font-size="29">f<tspan font-size="18">n</tspan>(x) = Σ <tspan fill="#b77b44">a<tspan font-size="18">j</tspan></tspan> <tspan fill="#0b819e">ReLU<tspan baseline-shift="super" font-size="18">k</tspan>(w<tspan font-size="18">j</tspan>·x + b<tspan font-size="18">j</tspan>)</tspan></text>
+<path d="M185 143V163H113V174" stroke="#b77b44" fill="none" stroke-width="1.5"/><path d="M353 143V174" stroke="#0d98ba" fill="none" stroke-width="1.5"/>
+<text x="113" y="197" font-size="22" fill="#a56530">Fitted weights</text><text x="353" y="197" font-size="22" fill="#0b819e">Fixed ridge features</text>
+<path d="M20 216H460" stroke="#dae5e9"/>
+<text x="240" y="249" font-size="22">Sobolev regularity → neural representations</text>
+</g></svg>
