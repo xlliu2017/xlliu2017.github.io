@@ -91,7 +91,7 @@
                     <a href="https://github.com/xlliu2017/xlliu2017.github.io/blob/main/articles/diff-ano.md" target="_blank" rel="noopener noreferrer">中文文章</a>
                 </div>
             </article>
-            <article class="highlight-card">
+            <article class="highlight-card highlight-wide">
                 <a class="highlight-figure" href="images/wechat-20261115/academic/shared_backbone.png" aria-label="View the self-composing neural operator architecture"><img src="images/wechat-20261115/academic/shared_backbone.png" alt="The same multigrid backbone repeatedly updates a hidden state, with shared weights and the same PDE inputs at each step; the final state is projected to the solution." loading="lazy" width="2368" height="674"></a>
                 <div class="highlight-card-body">
                     <span class="highlight-label">Operator learning · Multiscale PDEs</span>
@@ -114,12 +114,13 @@
                 </div>
             </article>
             <article class="highlight-card">
-                <a class="highlight-figure" href="newton-informed-idea.svg" aria-label="View the Newton-informed neural operator idea diagram"><img src="newton-informed-idea.svg" alt="Learn a Newton correction from the current iterate, add the correction, and repeat. Training enforces the linearized Newton equation." loading="lazy" width="360" height="252"></a>
+                <a class="highlight-figure" href="newton-informed-idea.svg" aria-label="View the Newton-informed neural operator idea diagram"><img src="newton-informed-idea.svg?v=2" alt="A neural operator maps the current state to an updated state and can be iterated; the linearized PDE residual guides training." loading="lazy" width="720" height="360"></a>
                 <div class="highlight-card-body">
                     <span class="highlight-label">Nonlinear PDEs · AI for science</span>
                     <h3><a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/dae8afc6b990aa0b3b5efaa096fbd7fa-Abstract-Conference.html">Newton-informed neural operator</a></h3>
                     <p>Learn the Newton correction rather than the final solution: predict an update, add it to the current iterate, and repeat. Training uses the linearized PDE equation.</p>
                     <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/dae8afc6b990aa0b3b5efaa096fbd7fa-Abstract-Conference.html" target="_blank">Paper</a>
+                    <a href="https://github.com/xlliu2017/Newton-Informed-Neural-Operator" target="_blank" rel="noopener noreferrer">Code</a>
                 </div>
             </article>
         </div>
@@ -132,6 +133,7 @@
                     <p>Hierarchical attention connects local detail with long-range interactions. An empirical H<sup>1</sup> loss helps learn high-frequency components of multiscale PDE solutions.</p>
                     <p class="highlight-venue">Journal of Computational Physics, 2024</p>
                     <a href="https://arxiv.org/abs/2210.10890" target="_blank">Paper</a>
+                    <a href="https://github.com/xlliu2017/HANO" target="_blank" rel="noopener noreferrer">Code</a>
                 </div>
             </article>
             <article class="highlight-card highlight-wide">
@@ -145,7 +147,7 @@
                 </div>
             </article>
             <article class="highlight-card">
-                <a class="highlight-figure" href="mgno-idea.svg" aria-label="View the MgNO idea"><img src="mgno-idea.svg" alt="A multigrid V-cycle restricts fine-scale features to coarser grids and prolongates coarse corrections back to the fine grid." loading="lazy" width="480" height="280"></a>
+                <a class="highlight-figure" href="mgno-idea.svg" aria-label="View the MgNO idea"><img src="mgno-idea.svg?v=2" alt="A learned multigrid V-cycle carries features between fine and coarse grids using restriction and prolongation." loading="lazy" width="720" height="370"></a>
                 <div class="highlight-card-body">
                     <h3><a href="https://arxiv.org/abs/2310.19809">MgNO: Neural operators via multigrid</a></h3>
                     <p>Parameterize linear operators with a learnable multigrid V-cycle. Fine-grid smoothing and coarse-grid corrections connect local structure with long-range coupling.</p>
