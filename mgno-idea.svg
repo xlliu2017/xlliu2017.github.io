@@ -1,13 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" role="img" aria-labelledby="title desc">
-<title id="title">Local detail. Global coupling.</title><desc id="desc">A learnable multigrid V-cycle descends from fine to coarse grids by restriction and returns by prolongation and correction. MgNO uses this structure to parameterize linear operators.</desc>
-<!-- Source: He, Liu, Xu. MgNO, ICLR 2024, arXiv:2310.19809. -->
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10" fill="none" stroke="#0d98ba" stroke-width="1.5"/></marker></defs>
-<rect x="1" y="1" width="478" height="278" rx="8" fill="#f8fbfc" stroke="#e5ecef"/>
-<g font-family="Arial, Helvetica, sans-serif" fill="#263b47" text-anchor="middle">
-<text x="240" y="39" font-size="28" font-weight="700">Local detail. Global coupling.</text>
-<g stroke="#0d98ba" stroke-width="2.5" marker-end="url(#a)"><path d="M97 108L157 150"/><path d="M189 176L218 195"/><path d="M263 195L292 176"/><path d="M323 150L383 108"/></g>
-<g fill="#e4f4f8" stroke="#0d98ba"><rect x="35" y="78" width="80" height="26"/><rect x="365" y="78" width="80" height="26"/><rect x="141" y="151" width="56" height="21"/><rect x="283" y="151" width="56" height="21"/><rect x="220" y="193" width="40" height="18"/></g>
-<g stroke="#8fcddd"><path d="M45 78V104M55 78V104M65 78V104M75 78V104M85 78V104M95 78V104M105 78V104M375 78V104M385 78V104M395 78V104M405 78V104M415 78V104M425 78V104M435 78V104M155 151V172M169 151V172M183 151V172M297 151V172M311 151V172M325 151V172M240 193V211"/></g>
-<g font-size="20" fill="#647680"><text x="75" y="68">Fine</text><text x="405" y="68">Fine</text><text x="240" y="181">Coarse</text><text x="86" y="166">Restrict</text><text x="394" y="166">Prolong</text></g>
-<text x="240" y="252" font-size="23">Learn the multigrid V-cycle</text>
-</g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 370" role="img" aria-labelledby="t d">
+<title id="t">MgNO multigrid neural operator</title><desc id="d">A learned multigrid V-cycle moves information between fine and coarse feature grids using restriction and prolongation.</desc>
+<defs><linearGradient id="field" x2="1" y2="1"><stop stop-color="#fbdd63"/><stop offset=".48" stop-color="#38b48d"/><stop offset="1" stop-color="#275f9c"/></linearGradient><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width=".8"/></pattern><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8z" fill="#276e99"/></marker></defs>
+<rect width="720" height="370" rx="16" fill="#f4f8fb"/><text x="26" y="33" fill="#35556e" font-family="Arial" font-size="16" font-weight="bold">MULTIGRID NEURAL OPERATOR</text>
+<g fill="url(#field)" stroke="#267399" stroke-width="2"><rect x="38" y="70" width="108" height="105" rx="5"/><rect x="197" y="146" width="79" height="76" rx="5"/><rect x="331" y="232" width="56" height="54" rx="4"/><rect x="444" y="146" width="79" height="76" rx="5"/><rect x="574" y="70" width="108" height="105" rx="5"/></g>
+<g fill="url(#grid)"><rect x="38" y="70" width="108" height="105"/><rect x="197" y="146" width="79" height="76"/><rect x="331" y="232" width="56" height="54"/><rect x="444" y="146" width="79" height="76"/><rect x="574" y="70" width="108" height="105"/></g>
+<g fill="none" stroke="#276e99" stroke-width="4" marker-end="url(#arr)"><path d="M147 131L190 158"/><path d="M277 199L324 240"/><path d="M388 241L438 201"/><path d="M524 159L568 132"/></g>
+<path d="M151 91 H568" fill="none" stroke="#95b7cf" stroke-width="2" stroke-dasharray="6 5"/>
+<g font-family="Arial" font-size="15" fill="#36576e" text-anchor="middle"><text x="92" y="60">Fine features</text><text x="360" y="313">Coarse features</text><text x="627" y="60">Updated features</text><text x="188" y="260">Restriction</text><text x="528" y="260">Prolongation</text></g><text x="360" y="350" text-anchor="middle" font-family="Arial" font-size="14" fill="#668195">Learned convolutions connect scales through a V-cycle</text></svg>
